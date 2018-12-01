@@ -11,9 +11,9 @@ $replyToken =  $sValue[1];
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = ">>>dd>>>-----Ok----" ;
 echo $resp;
-return;
+//return;
 
-//pushMessage($resp,$access_token,$replyToken) ;  
+pushMessage($resp,$access_token,$replyToken) ;  
 
 if ($ActionType == "C1" ) {
 
