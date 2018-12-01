@@ -14,7 +14,7 @@ $ActionType= substr($MessageInput,0,1) ;
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 echo $resp;
 $result = getPortImageURL($contact9Code) ;
-
+echo " Curl Result-->" . $result ;
 
 $text = "งง ???? " .$sValue[0]; 
 $text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งาน--->" . $resp; 
