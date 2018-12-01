@@ -240,7 +240,7 @@ function pushImage($ImageFileName,$access_token,$replyToken) {
 
 
 function getPortImageURL($contact9Code) { 
-
+/*
        $portTransNo = "5805";
        $data = array (
         'portTransNo' => 'value1',
@@ -270,7 +270,7 @@ function getPortImageURL($contact9Code) {
     else
      echo $result;
          
-
+*/
 
     
 } // end func
