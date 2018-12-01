@@ -13,7 +13,7 @@ $replyToken =  $sValue[1];
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 echo $resp;
-//getPortImageURL($contact9Code) ;
+getPortImageURL($contact9Code) ;
 
 
 $text = "งง ???? " .$sValue[0]; 
@@ -22,10 +22,10 @@ $text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งา�
 
 
 $ImageFileName = "https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg?auto=compress&cs=tinysrgb&h=350" ;
-pushMessage($text,$access_token,$replyToken) ; 
+//pushMessage($text,$access_token,$replyToken) ; 
 pushImage($ImageFileName,$access_token,$replyToken);
 
-pushMessage($text,$access_token,$replyToken) ; 
+//pushMessage($text,$access_token,$replyToken) ; 
 
 //return;
 
