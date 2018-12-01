@@ -12,10 +12,11 @@ $MessageInput = $sValue[0];
 $replyToken =  $sValue[1];  
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
-echo $resp;
+//echo $resp;
 $result = getPortImageURL($contact9Code) ;
+pushMessage($result,$access_token,$replyToken) ; 
 echo " Curl Result-->" . $result ;
-
+return;
 $text = "งง ???? " .$sValue[0]; 
 $text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งาน--->" . $resp; 
 //echo $text ;
@@ -259,7 +260,7 @@ function getPortImageURL($contact9Code) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url.'?'.$params ); //Url together with parameters
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 170); //Timeout after 7 seconds
     curl_setopt($ch, CURLOPT_USERAGENT , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
     curl_setopt($ch, CURLOPT_HEADER, 0);
     
@@ -267,7 +268,7 @@ function getPortImageURL($contact9Code) {
     curl_close($ch);
 
     if(curl_errno($ch))  //catch if curl error exists and show it
-      echo 'Curl error: ' . curl_error($ch);
+      $result =  'Curl error: ' . curl_error($ch);
     else
      echo $result;
          
