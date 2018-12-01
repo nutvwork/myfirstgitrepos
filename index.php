@@ -13,7 +13,7 @@ $replyToken =  $sValue[1];
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 //echo $resp;
-$result = getPortImageURL($porttransno='52243') ;
+$result = getPortImageURL($sValue[0]) ;
 $ImageFileName = $result ; 
 //pushImage($ImageFileName,$access_token,$replyToken);
 pushMessage($result,$access_token,$replyToken) ; 
@@ -257,7 +257,7 @@ function getPortImageURL($porttransNo) {
                 $params .= $key.'='.$value.'&';
          
         $params = trim($params, '&'); 
-		$params = "portTransNo=55243";
+		$params = "portTransNo=" . $porttransNo ;
 
     $url= "https://talonplus.co.th/port/class/clsCreatePortImageByCurl.php" ;
     $ch = curl_init();
