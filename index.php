@@ -10,6 +10,7 @@ $MessageInput = $sValue[0];
 $replyToken =  $sValue[1];  
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = ">>>dd>>>-----Ok----" ;
+echo $resp;
 return;
 
 //pushMessage($resp,$access_token,$replyToken) ;  
