@@ -19,7 +19,7 @@ if ($ActionType == "C1" ) {
 
    $resp = getData($MessageInput) ;    
    pushMessage($resp,$access_token,$replyToken) ; 
-   $ImageFileName = "http://images.all-free-download.com/images/graphicthumb/corporate_brochure_template_modern_checkered_blue_decoration_6828099.jpg" ;
+   $ImageFileName = "https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg?auto=compress&cs=tinysrgb&h=350" ;
    pushImage($ImageFileName,$access_token,$replyToken);
    return;
 }
