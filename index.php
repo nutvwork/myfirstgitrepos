@@ -256,7 +256,8 @@ function getPortImageURL($porttransNo) {
         foreach($data as $key=>$value)
                 $params .= $key.'='.$value.'&';
          
-        $params = trim($params, '&');
+        $params = trim($params, '&'); 
+		$params = "portTransNo=55243";
 
     $url= "https://talonplus.co.th/port/class/clsCreatePortImageByCurl.php" ;
     $ch = curl_init();
