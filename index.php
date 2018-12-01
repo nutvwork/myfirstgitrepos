@@ -9,7 +9,7 @@ $sValue= getInputMessage() ;
 $MessageInput = $sValue[0];  
 $replyToken =  $sValue[1];  
 $ActionType= substr($MessageInput,0,1) ; 
-$resp = "Bot Set From GIT -----Ok----" ;
+$resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType;
 echo $resp;
 //return;
 
