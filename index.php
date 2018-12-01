@@ -13,7 +13,7 @@ $replyToken =  $sValue[1];
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 //echo $resp;
-$result = getPortImageURL($contact9Code) ;
+$result = getPortImageURL($porttransno='52243') ;
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
 //pushMessage($result,$access_token,$replyToken) ; 
@@ -243,11 +243,11 @@ function pushImage($ImageFileName,$access_token,$replyToken) {
 
 
 
-function getPortImageURL($contact9Code) { 
+function getPortImageURL($porttransNo) { 
 
-       $portTransNo = "5805";
+//       $portTransNo = "5805";
        $data = array (
-        'portTransNo' => 'value1',
+        'portTransNo' => $porttransNo,
         'key2' => 'value2',
         'key3' => 'value3'
         );
