@@ -13,7 +13,7 @@ $replyToken =  $sValue[1];
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 echo $resp;
-//getPortImageURL($contact9Code) ;
+getPortImageURL($contact9Code) ;
 
 return;
 $text = "งง ???? " .$sValue[0]; 
