@@ -1,7 +1,9 @@
- <?php
-/* Old WebHook--->nutvline.herokuapp.com/index.php*/
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 
+
+ 
+<?php
 
 $access_token = 'N0IzKf3n/tuu23eKxvUEkAY6Afzj8nu+lQYp+FyOAZXSVofsrCArcwRBOJKEbssASNnN5S35vUE5yiQ3dPcvlRqu9G0IVPHVxUHUHW63dUUUdxfcWpbZUj7iu8ImPFKK8LnAdy5wGDxvMhUD1A1fugdB04t89/1O/w1cDnyilFU=';
 
@@ -10,11 +12,14 @@ $MessageInput = $sValue[0];
 $replyToken =  $sValue[1];  
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
-//echo $resp;
+echo $resp;
+getPortImageURL($contact9Code) ;
 
+return;
 $text = "งง ???? " .$sValue[0]; 
 $text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งาน--->" . $resp; 
 //echo $text ;
+
 
 $ImageFileName = "https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg?auto=compress&cs=tinysrgb&h=350" ;
 pushImage($ImageFileName,$access_token,$replyToken);
@@ -230,10 +235,47 @@ function pushImage($ImageFileName,$access_token,$replyToken) {
 
 			echo $result . "\r\n";
 
+} 
 
 
 
-}
+function getPortImageURL($contact9Code) { 
+
+       $portTransNo = "5805";
+       $data = array (
+        'portTransNo' => 'value1',
+        'key2' => 'value2',
+        'key3' => 'value3'
+        );
+        
+        $params = '';
+        foreach($data as $key=>$value)
+                $params .= $key.'='.$value.'&';
+         
+        $params = trim($params, '&');
+
+    $url= "https://talonplus.co.th/port/class/clsCreatePortImageByCurl.php" ;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url.'?'.$params ); //Url together with parameters
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 7); //Timeout after 7 seconds
+    curl_setopt($ch, CURLOPT_USERAGENT , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    if(curl_errno($ch))  //catch if curl error exists and show it
+      echo 'Curl error: ' . curl_error($ch);
+    else
+     echo $result;
+         
+
+
+    
+} // end func
+
+
 
 
 
