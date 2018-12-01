@@ -9,11 +9,17 @@ $sValue= getInputMessage() ;
 $MessageInput = $sValue[0];  
 $replyToken =  $sValue[1];  
 $ActionType= substr($MessageInput,0,1) ; 
-$resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType;
+$resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 echo $resp;
+
+$text = "งง ???? " .$sValue[0]; 
+$text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งาน--->" . $resp; 
+echo $text ;
+pushMessage($text,$access_token,$replyToken) ; 
+
 //return;
 
-pushMessage($resp,$access_token,$replyToken) ;  
+//pushMessage($resp,$access_token,$replyToken) ;  
 
 if ($ActionType == "C1" ) {
 
@@ -38,7 +44,6 @@ if ($ActionType == "P" || $ActionType == "p" ) {
 //$resp = getData($MessageInput) ;
 
 $text = "งง ???? " .$sValue[0]; 
-
 $text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งาน--->" . $resp; 
 pushMessage($text,$access_token,$replyToken) ; 
 //return;
