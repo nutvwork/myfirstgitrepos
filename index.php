@@ -16,7 +16,8 @@ $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 $result = getPortImageURL($sValue[0]) ;
 
 $resultAr = explode("|",$result); 
-
+pushMessage($resultAr[0],$access_token,$replyToken) ; 
+return;
 if ($resultAr[0] == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
