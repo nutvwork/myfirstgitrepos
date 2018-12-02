@@ -14,11 +14,11 @@ $ActionType= substr($MessageInput,0,1) ;
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 //echo $resp;
 $result = getPortImageURL($sValue[0]) ;
-pushMessage($result,$access_token,$replyToken) ; 
+
 $resultAr = explode("|",$result); 
 
 if ($resultAr[0] == "Fail") {
-  pushMessage($result,$access_token,$replyToken) ; 
+  pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
 }
 $ImageFileName = $result ; 
