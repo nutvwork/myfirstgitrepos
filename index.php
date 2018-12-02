@@ -250,11 +250,11 @@ function pushImage($ImageFileName,$access_token,$replyToken) {
 
 
 
-function getPortImageURL($porttransNo) { 
+function getPortImageURL($contact9No) { 
 
 //       $portTransNo = "5805";
        $data = array (
-        'portTransNo' => $porttransNo,
+        'contact9No' => $contact9No,
         'key2' => 'value2',
         'key3' => 'value3'
         );
@@ -264,7 +264,7 @@ function getPortImageURL($porttransNo) {
                 $params .= $key.'='.$value.'&';
          
         $params = trim($params, '&'); 
-		$params = "portTransNo=" . $porttransNo ;
+		$params = "contact9No=" . $contact9No ;
 
     $url= "https://talonplus.co.th/port/class/clsCreatePortImageByCurl.php" ;
     $ch = curl_init();
