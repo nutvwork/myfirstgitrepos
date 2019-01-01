@@ -1,7 +1,5 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
-
-
  
 <?php
 
@@ -16,8 +14,10 @@ $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 $result = getPortImageURL($sValue[0]) ;
 
 $resultAr = explode("|",$result); 
+
+pushMessage("Test",$access_token,$replyToken) ; 
 //pushMessage($resultAr[0],$access_token,$replyToken) ; 
-//return;
+return;
 if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
@@ -27,6 +27,7 @@ pushImage($ImageFileName,$access_token,$replyToken);
 //pushMessage($result,$access_token,$replyToken) ; 
 echo " Curl Result-->" . $result ;
 return;
+
 $text = "งง ???? " .$sValue[0]; 
 $text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งาน--->" . $resp; 
 //echo $text ;
