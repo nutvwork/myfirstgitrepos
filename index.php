@@ -1,8 +1,9 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
+
+
  
 <?php
-
 
 $access_token = 'N0IzKf3n/tuu23eKxvUEkAY6Afzj8nu+lQYp+FyOAZXSVofsrCArcwRBOJKEbssASNnN5S35vUE5yiQ3dPcvlRqu9G0IVPHVxUHUHW63dUUUdxfcWpbZUj7iu8ImPFKK8LnAdy5wGDxvMhUD1A1fugdB04t89/1O/w1cDnyilFU=';
 
@@ -15,39 +16,17 @@ $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 $result = getPortImageURL($sValue[0]) ;
 
 $resultAr = explode("|",$result); 
-
-//pushMessage("Test",$access_token,$replyToken) ; 
-
-/*$sql = "select max(portTransKeyID) from portTransaction where contact9='". $sValue[0]. "'"; 
-$portTransNo = getValue($sql);
-pushMessage($sql,$access_token,$replyToken) ; 
-return;
-
-$sql = "select contact9,contact11,cusname,carregis,carprovince from  `viewportrenewalStaff` WHERE recno =" . $portTransNo ;
-$row = getRowSet($sql) ; 
-
-$str = "\n"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
-$str .= "เลขสัญญา  9 หลัก :".  $row['contact9'] . "\n" ;
-$str .= "ชื่อลูกค้า   :".  $row['cusname'] . "\n" ;
-$str .= "เลขทะเบียนรถ   :".  $row['carregis'] . ' ' . $row['carprovince'] .  "\n" ;
-$str .= "คลิกดูไฟล์รูป Port ---> " .$downloadFileName;
-
-//pushMessage($sql,$access_token,$replyToken) ; 
 //pushMessage($resultAr[0],$access_token,$replyToken) ; 
-
-/*if (trim($resultAr[0]) == "Fail") {
+//return;
+if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
 }
-*/
-
-
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
 //pushMessage($result,$access_token,$replyToken) ; 
 echo " Curl Result-->" . $result ;
 return;
-
 $text = "งง ???? " .$sValue[0]; 
 $text .= " พิมพ์  P123456789 เพื่อดู ใบ Port งาน--->" . $resp; 
 //echo $text ;
@@ -281,11 +260,12 @@ function getPortImageURL($contact9No) {
         'key3' => 'value3'
         );
         
-    $params = '';
-    foreach($data as $key=>$value)
-      $params .= $key.'='.$value.'&';        
-      $params = trim($params, '&'); 
-	  $params = "contact9No=" . $contact9No ;
+        $params = '';
+        foreach($data as $key=>$value)
+                $params .= $key.'='.$value.'&';
+         
+        $params = trim($params, '&'); 
+		$params = "contact9No=" . $contact9No ;
 
     $url= "https://talonplus.co.th/port/class/clsCreatePortImageByCurl.php" ;
     $ch = curl_init();
@@ -303,7 +283,7 @@ function getPortImageURL($contact9No) {
     else
      echo $result;
          
-    return $contact9No ."-" . $result ;
+    return $result ;
 
     
 } // end func
