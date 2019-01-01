@@ -13,15 +13,17 @@ $replyToken =  $sValue[1];
 $ActionType= substr($MessageInput,0,1) ; 
 $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 //echo $resp;
-$result = getPortImageURL($sValue[0]) ;
-
+$contact9 = $sValue[0] ;
+$result = getPortImageURL($contact9) ;
+$str = getDataString($contact9) ;
 $resultAr = explode("|",$result); 
-pushMessage($result,$access_token,$replyToken) ; 
-return;
+
 if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
-} 
+}  else {
+  pushMessage($str,$access_token,$replyToken) ; 
+}
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
 //pushMessage($result,$access_token,$replyToken) ; 
@@ -290,6 +292,29 @@ function getPortImageURL($contact9No) {
 
 
 
+
+function getDataString($contact9) {
+
+  
+     $sql = "select max(portTransKeyID) from portTransaction where contact9='" . $cpntact9."'"; 
+     $portTransNo= getValue($sql);
+     
+    
+    
+    
+	$sql = "select contact9,contact11,cusname,carregis,carprovince from  `viewportrenewalStaff` WHERE recno =" . $portTransNo;
+    $row = getRowSet($sql) ; 
+
+    $downloadFileName = "https://www.talonplus.co.th/port/images/portimages/port_". $portTransNo . "_". $row['contact9']  . ".png" ;
+    $str = "\n"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
+    $str .= "เลขสัญญา  9 หลัก :".  $row['contact9'] . "\n" ;
+    $str .= "ชื่อลูกค้า   :".  $row['cusname'] . "\n" ;
+    $str .= "เลขทะเบียนรถ   :".  $row['carregis'] . ' ' . $row['carprovince'] .  "\n" ;
+    $str .= "คลิกดูไฟล์รูป Port ---> " .$downloadFileName;
+	return $str ;
+
+    
+} // end func
 
 
   ?>
