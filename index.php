@@ -20,7 +20,8 @@ $resultAr = explode("|",$result);
 
 $sql = "select max(portTransKeyID) from portTransaction where contact9='". $sValue[0]. "'"; 
 $portTransNo = getValue($sql);
-
+pushMessage($sql,$access_token,$replyToken) ; 
+return;
 
 $sql = "select contact9,contact11,cusname,carregis,carprovince from  `viewportrenewalStaff` WHERE recno =" . $portTransNo ;
 $row = getRowSet($sql) ; 
