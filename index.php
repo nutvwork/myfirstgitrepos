@@ -31,12 +31,14 @@ $str .= "ชื่อลูกค้า   :".  $row['cusname'] . "\n" ;
 $str .= "เลขทะเบียนรถ   :".  $row['carregis'] . ' ' . $row['carprovince'] .  "\n" ;
 $str .= "คลิกดูไฟล์รูป Port ---> " .$downloadFileName;
 
-pushMessage($resultAr[0],$access_token,$replyToken) ; 
+pushMessage($sql,$access_token,$replyToken) ; 
+//pushMessage($resultAr[0],$access_token,$replyToken) ; 
 
-if (trim($resultAr[0]) == "Fail") {
+/*if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
 }
+*/
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
 //pushMessage($result,$access_token,$replyToken) ; 
