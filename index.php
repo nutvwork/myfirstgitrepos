@@ -15,7 +15,7 @@ $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 //echo $resp;
 $contact9 = $sValue[0] ;
 $result = getPortImageURL($contact9) ;
-$str    = getPortDataString($contact9No) ;
+$str    = getPortDataString($contact9) ;
 $resultAr = explode("|",$result); 
 
 if (trim($resultAr[0]) == "Fail") {
