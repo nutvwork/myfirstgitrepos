@@ -18,7 +18,7 @@ $resultAr = explode("|",$result);
 
 //pushMessage("Test",$access_token,$replyToken) ; 
 
-$sql = "select max(portTransKeyID) from portTransaction where contact9='". $sValue[0]. "'"; 
+/*$sql = "select max(portTransKeyID) from portTransaction where contact9='". $sValue[0]. "'"; 
 $portTransNo = getValue($sql);
 pushMessage($sql,$access_token,$replyToken) ; 
 return;
@@ -32,7 +32,7 @@ $str .= "ชื่อลูกค้า   :".  $row['cusname'] . "\n" ;
 $str .= "เลขทะเบียนรถ   :".  $row['carregis'] . ' ' . $row['carprovince'] .  "\n" ;
 $str .= "คลิกดูไฟล์รูป Port ---> " .$downloadFileName;
 
-pushMessage($sql,$access_token,$replyToken) ; 
+//pushMessage($sql,$access_token,$replyToken) ; 
 //pushMessage($resultAr[0],$access_token,$replyToken) ; 
 
 /*if (trim($resultAr[0]) == "Fail") {
@@ -40,6 +40,8 @@ pushMessage($sql,$access_token,$replyToken) ;
   return;
 }
 */
+
+
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
 //pushMessage($result,$access_token,$replyToken) ; 
@@ -283,7 +285,7 @@ function getPortImageURL($contact9No) {
     foreach($data as $key=>$value)
       $params .= $key.'='.$value.'&';        
       $params = trim($params, '&'); 
-	   $params = "contact9No=" . $contact9No ;
+	  $params = "contact9No=" . $contact9No ;
 
     $url= "https://talonplus.co.th/port/class/clsCreatePortImageByCurl.php" ;
     $ch = curl_init();
@@ -301,7 +303,7 @@ function getPortImageURL($contact9No) {
     else
      echo $result;
          
-    return $result ;
+    return $contact9No ."-" . $result ;
 
     
 } // end func
