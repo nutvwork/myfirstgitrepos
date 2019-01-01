@@ -18,14 +18,17 @@ $result = getPortImageURL($contact9) ;
 $str    = getPortDataString($contact9) ;
 $resultAr = explode("|",$result); 
 
+
+
 if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
 }  else {
+  $ImageFileName = $result ; 
+  pushImage($ImageFileName,$access_token,$replyToken);
   pushMessage($str,$access_token,$replyToken) ; 
 }
-$ImageFileName = $result ; 
-pushImage($ImageFileName,$access_token,$replyToken);
+
 //pushMessage($result,$access_token,$replyToken) ; 
 echo " Curl Result-->" . $result ;
 return;
