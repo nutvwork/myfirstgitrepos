@@ -25,7 +25,7 @@ if (trim($resultAr[0]) == "Fail") {
   pushMessage($str,$access_token,$replyToken) ; 
 }
 $ImageFileName = $result ; 
-pushImage($ImageFileName,$access_token,$replyToken);
+//pushImage($ImageFileName,$access_token,$replyToken);
 //pushMessage($result,$access_token,$replyToken) ; 
 echo " Curl Result-->" . $result ;
 return;
