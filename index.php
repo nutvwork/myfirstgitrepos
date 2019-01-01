@@ -22,7 +22,7 @@ if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
 }  else {
-  pushMessage($str,$access_token,$replyToken) ; 
+ // pushMessage($str,$access_token,$replyToken) ; 
 }
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
@@ -295,8 +295,9 @@ function getPortImageURL($contact9No) {
 
 function getDataString($contact9) {
 
+
   
-     $sql = "select max(portTransKeyID) from portTransaction where contact9='" . $cpntact9."'"; 
+     $sql = "select max(portTransKeyID) from portTransaction where contact9='" . $contact9."'"; 
      $portTransNo= getValue($sql);
      
     
