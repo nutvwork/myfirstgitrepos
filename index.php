@@ -18,9 +18,12 @@ $result = getPortImageURL($sValue[0]) ;
 $resultAr = explode("|",$result); 
 //pushMessage($resultAr[0],$access_token,$replyToken) ; 
 //return;
-if (trim($resultAr[0]) == "Fail") {
+if (trim($resultAr[0]) == "Fail") {  
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
+} else {
+  // GetStr($resultAr[1]);
+  pushMessage($resultAr,$access_token,$replyToken) ; 
 }
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
@@ -290,6 +293,10 @@ function getPortImageURL($contact9No) {
 
 
 
+
+function GetStr() {
+    
+} // end func
 
 
   ?>
