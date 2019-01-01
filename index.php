@@ -15,14 +15,14 @@ $resp = "Bot Set From GIT -----Ok---Action Type-->" .$ActionType ;
 //echo $resp;
 $contact9 = $sValue[0] ;
 $result = getPortImageURL($contact9) ;
-//$str = getDataString($contact9) ;
+$str    = getPortDataString($contact9No) ;
 $resultAr = explode("|",$result); 
 
 if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
 }  else {
- // pushMessage($str,$access_token,$replyToken) ; 
+  pushMessage($str,$access_token,$replyToken) ; 
 }
 $ImageFileName = $result ; 
 pushImage($ImageFileName,$access_token,$replyToken);
@@ -290,6 +290,43 @@ function getPortImageURL($contact9No) {
     
 } // end func
 
+
+function getPortDataString($contact9No) { 
+
+//       $portTransNo = "5805";
+       $data = array (
+        'contact9No' => $contact9No,
+        'key2' => 'value2',
+        'key3' => 'value3'
+        );
+        
+        $params = '';
+        foreach($data as $key=>$value)
+          $params .= $key.'='.$value.'&';
+         
+        $params = trim($params, '&'); 
+		$params = "contact9No=" . $contact9No ;
+
+    $url= "https://talonplus.co.th/port/class/clsCreatePortDataStringCurl.php" ;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url.'?'.$params ); //Url together with parameters
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Return data instead printing directly in Browser
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 170); //Timeout after 7 seconds
+    curl_setopt($ch, CURLOPT_USERAGENT , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    if(curl_errno($ch))  //catch if curl error exists and show it
+      $result =  'Curl error: ' . curl_error($ch);
+    else
+     echo $result;
+         
+    return $result ;
+
+    
+}
 
 
 
