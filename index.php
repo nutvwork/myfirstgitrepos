@@ -16,9 +16,23 @@ $result = getPortImageURL($sValue[0]) ;
 
 $resultAr = explode("|",$result); 
 
-pushMessage("Test",$access_token,$replyToken) ; 
-//pushMessage($resultAr[0],$access_token,$replyToken) ; 
-return;
+//pushMessage("Test",$access_token,$replyToken) ; 
+
+$sql = "select max(portTransKeyID) from portTransaction where contact9='". $sValue[0]. "'"; 
+$portTransNo = getValue($sql);
+
+
+$sql = "select contact9,contact11,cusname,carregis,carprovince from  `viewportrenewalStaff` WHERE recno =" . $portTransNo ;
+$row = getRowSet($sql) ; 
+
+$str = "\n"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
+$str .= "เลขสัญญา  9 หลัก :".  $row['contact9'] . "\n" ;
+$str .= "ชื่อลูกค้า   :".  $row['cusname'] . "\n" ;
+$str .= "เลขทะเบียนรถ   :".  $row['carregis'] . ' ' . $row['carprovince'] .  "\n" ;
+$str .= "คลิกดูไฟล์รูป Port ---> " .$downloadFileName;
+
+pushMessage($resultAr[0],$access_token,$replyToken) ; 
+
 if (trim($resultAr[0]) == "Fail") {
   pushMessage($resultAr[1],$access_token,$replyToken) ; 
   return;
@@ -262,12 +276,11 @@ function getPortImageURL($contact9No) {
         'key3' => 'value3'
         );
         
-        $params = '';
-        foreach($data as $key=>$value)
-                $params .= $key.'='.$value.'&';
-         
-        $params = trim($params, '&'); 
-		$params = "contact9No=" . $contact9No ;
+    $params = '';
+    foreach($data as $key=>$value)
+      $params .= $key.'='.$value.'&';        
+      $params = trim($params, '&'); 
+	   $params = "contact9No=" . $contact9No ;
 
     $url= "https://talonplus.co.th/port/class/clsCreatePortImageByCurl.php" ;
     $ch = curl_init();
