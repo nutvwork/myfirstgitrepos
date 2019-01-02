@@ -4,8 +4,26 @@
 
  
 <?php
+$host =  "http://www.talonplus.co.th";
+$username =  "talonplu_16102510";
+$password = "maithong";
+$dbname = "talonplu_onweb";
 
-$access_token = 'N0IzKf3n/tuu23eKxvUEkAY6Afzj8nu+lQYp+FyOAZXSVofsrCArcwRBOJKEbssASNnN5S35vUE5yiQ3dPcvlRqu9G0IVPHVxUHUHW63dUUUdxfcWpbZUj7iu8ImPFKK8LnAdy5wGDxvMhUD1A1fugdB04t89/1O/w1cDnyilFU=';
+
+$conn = @mysql_pconnect($host, $username,$password) ;
+
+		   $sterr = "<br/>Cannot Open Connection username=" . $username . ";password=" . $password ; 
+		   mysql_select_db($dbname, $conn)  or die($sterr);
+		   //mysql_select_db('thairealestate', $conn)  or die("Cannot Open Database");
+		   mysql_query("SET NAMES UTF8"); 
+
+
+
+
+$access_token = 'N0IzKf3n/tuu23eKxvUEkAY6Afzj8nu+lQYp+FyOAZXSVofsrCArcwRBOJKEbssASNnN5S35vUE5yiQ3dPcvlRqu9G0IVPHVxUHUHW63dUUUdxfcWpbZUj7iu8ImPFKK8LnAdy5wGDxvMhUD1A1fugdB04t89/1O/w1cDnyilFU='; 
+
+pushMessage($sterr,$access_token,$replyToken) ; 
+return;
 
 $sValue= getInputMessage() ;
 $MessageInput = $sValue[0];  
