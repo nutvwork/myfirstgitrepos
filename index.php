@@ -4,7 +4,7 @@
 
  
 <?php
-$host =  "http://www.talonplus.co.th";
+$host =  "http://www.talonplus.co.th:2222";
 $username =  "talonplu_16102510";
 $password = "maithong";
 $dbname = "talonplu_onweb";
